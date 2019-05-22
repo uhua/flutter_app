@@ -1,6 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-//widget分支
+
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
