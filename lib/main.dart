@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Widget/widgetTest.dart';
 
-void main() => runApp(new MyApp());
-
-class MyApp extends StatelessWidget {
+import 'EchoRoute.dart';
+import 'NewRoute.dart';
+import 'Widget/ImageTest.dart';
+import 'Widget/Imageends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      //应用名称
       title: 'Flutter Demo',
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        //蓝色主题
+        primarySwatch: Colors.red,
       ),
+      //应用首页路由
       home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      //注册路由表
+      routes: {
+        "new_page": (context) => NewRoute(),
+        "argument_page": (context) => EchoRoute(),
+      },
     );
   }
 }
@@ -49,6 +59,42 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            FlatButton(
+              child: Text("跳转到新路由"),
+              textColor: Colors.blue,
+              onPressed: () {
+                //跳转到新路由
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) {
+                          return new NewRoute();
+                        },
+                        fullscreenDialog: true));
+              },
+            ),
+            FlatButton(
+              child: Text("带参路由"),
+              textColor: Colors.pink,
+              onPressed: () {
+                //通过路由名跳转到带参路由
+                Navigator.pushNamed(context, "argument_page",
+                    arguments: "hello");
+              },
+            ),
+            //这里用来跳转到测试路由
+            FlatButton(
+              child: Text("Test"),
+              textColor: Colors.pink,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (BuildContext context) {
+                  return new ImageTest();
+                }));
+              },
+            ),
+            //这里用来测试widget
+            new ParentWidgetC(),
           ],
         ),
       ),
