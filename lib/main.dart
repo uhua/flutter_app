@@ -4,7 +4,10 @@ import 'package:flutter_app/Widget/widgetTest.dart';
 import 'EchoRoute.dart';
 import 'NewRoute.dart';
 import 'Widget/ImageTest.dart';
-import 'Widget/Imageends StatelessWidget {
+
+void main() => runApp(new MyApp());
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
